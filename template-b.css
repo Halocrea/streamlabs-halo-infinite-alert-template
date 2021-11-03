@@ -1,0 +1,325 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  color: white;
+  background-color: rgba(0, 0, 0, .33);
+}
+
+.alert {
+  position: relative;
+  width: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-animation: expand-alert 1.5s cubic-bezier(0.27, 0.55, 0.75, 0.32) forwards;
+          animation: expand-alert 1.5s cubic-bezier(0.27, 0.55, 0.75, 0.32) forwards;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+.alert__inner {
+  position: relative;
+  padding: 48px 0;
+  display: flex;
+  max-width: 100%;
+  width: auto;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  flex: none;
+  -webkit-animation: move-up 1.5s cubic-bezier(0.17, 0.67, 0.16, 0.99) forwards;
+          animation: move-up 1.5s cubic-bezier(0.17, 0.67, 0.16, 0.99) forwards;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+}
+.alert .plus {
+  position: absolute;
+  width: 17px;
+  height: 100%;
+  top: 0;
+}
+.alert .plus::before, .alert .plus::after {
+  content: "+";
+  position: absolute;
+  left: 0;
+  width: 17px;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  -webkit-animation: blip-then-shrink 6s linear forwards 1;
+          animation: blip-then-shrink 6s linear forwards 1;
+}
+.alert .plus--left {
+  left: 0;
+}
+.alert .plus--right {
+  right: 0;
+}
+.alert .plus--left::before, .alert .plus--right::before {
+  top: 0;
+}
+.alert .plus--left::after, .alert .plus--right::after {
+  bottom: 0;
+}
+
+.username {
+  position: relative;
+  padding: 12px 48px;
+  font-size: 48px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.username::before, .username::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  background-color: white;
+  -webkit-animation: username-borders-then-fade 4s cubic-bezier(0.17, 0.67, 0.16, 0.99) forwards;
+          animation: username-borders-then-fade 4s cubic-bezier(0.17, 0.67, 0.16, 0.99) forwards;
+  -webkit-animation-delay: 1.5s;
+          animation-delay: 1.5s;
+}
+.username::before {
+  top: 6px;
+  left: 48px;
+}
+.username::after {
+  bottom: 6px;
+  right: 48px;
+}
+.username__inner {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  padding: 0 6px;
+}
+.username__inner::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 0;
+  width: 0;
+  height: 72px;
+  background-color: rgba(197, 123, 255, .5);
+  transform: translate3d(-50%, -50%, 0);
+  -webkit-animation: username-bg-slide-in-then-fade 4s cubic-bezier(0.17, 0.67, 0.16, 0.99) forwards;
+          animation: username-bg-slide-in-then-fade 4s cubic-bezier(0.17, 0.67, 0.16, 0.99) forwards;
+  -webkit-animation-delay: 1.25s;
+          animation-delay: 1.25s;
+}
+.username__inner > span {
+  position: relative;
+  z-index: 1;
+}
+
+.message {
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  white-space: nowrap;
+  -webkit-animation: move-up-slightly 2s cubic-bezier(0.17, 0.67, 0.16, 0.99) forwards;
+          animation: move-up-slightly 2s cubic-bezier(0.17, 0.67, 0.16, 0.99) forwards;
+  -webkit-animation-delay: 4.25s;
+          animation-delay: 4.25s;
+}
+.message::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 25px;
+  background-color: rgba(65, 150, 255, 0.33);
+  transform: translate3d(-50%, -50%, 0);
+  -webkit-animation: username-bg-slide-in-then-fade 3.75s cubic-bezier(0.17, 0.67, 0.16, 0.99) forwards;
+          animation: username-bg-slide-in-then-fade 3.75s cubic-bezier(0.17, 0.67, 0.16, 0.99) forwards;
+  -webkit-animation-delay: 1.75s;
+          animation-delay: 1.75s;
+}
+.message > span {
+  position: relative;
+  z-index: 1;
+  padding: 0 6px;
+  opacity: 0;
+  -webkit-animation: fade-in 0.5s linear forwards;
+          animation: fade-in 0.5s linear forwards;
+  -webkit-animation-delay: 2.5s;
+          animation-delay: 2.5s;
+}
+
+.username__inner > span {
+  opacity: 0;
+  -webkit-animation: fade-in 0.5s linear forwards;
+          animation: fade-in 0.5s linear forwards;
+  -webkit-animation-delay: 2.25s;
+          animation-delay: 2.25s;
+}
+
+@-webkit-keyframes blip-then-shrink {
+  0%, 5%, 25% {
+    opacity: 1;
+  }
+  2.5%, 7.5% {
+    opacity: 0.2;
+  }
+  50% {
+    transform: scale(1) rotate(0deg);
+  }
+  55%, 100% {
+    transform: scale(0) rotate(360deg);
+  }
+}
+
+@keyframes blip-then-shrink {
+  0%, 5%, 25% {
+    opacity: 1;
+  }
+  2.5%, 7.5% {
+    opacity: 0.2;
+  }
+  50% {
+    transform: scale(1) rotate(0deg);
+  }
+  55%, 100% {
+    transform: scale(0) rotate(360deg);
+  }
+}
+@-webkit-keyframes expand-alert {
+  from {
+    width: 11px;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes expand-alert {
+  from {
+    width: 11px;
+  }
+  to {
+    width: 100%;
+  }
+}
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes username-bg-slide-in-then-fade {
+  0% {
+    width: 0;
+  }
+  33%, 65% {
+    width: 100%;
+    opacity: 1;
+  }
+  75%, 100% {
+    width: 100%;
+    opacity: 0;
+  }
+}
+@keyframes username-bg-slide-in-then-fade {
+  0% {
+    width: 0;
+  }
+  33%, 65% {
+    width: 100%;
+    opacity: 1;
+  }
+  75%, 100% {
+    width: 100%;
+    opacity: 0;
+  }
+}
+@-webkit-keyframes username-borders-then-fade {
+  0% {
+    width: 0;
+  }
+  33%, 65% {
+    width: calc(100% - 96px);
+    opacity: 1;
+  }
+  70%, 100% {
+    width: calc(100% - 96px);
+    opacity: 0;
+  }
+}
+@keyframes username-borders-then-fade {
+  0% {
+    width: 0;
+  }
+  33%, 65% {
+    width: calc(100% - 96px);
+    opacity: 1;
+  }
+  70%, 100% {
+    width: calc(100% - 96px);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes move-up {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, -110%, 0);
+  }
+}
+@keyframes move-up {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, -90%, 0);
+  }
+}
+@-webkit-keyframes move-up-slightly {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, -12px, 0);
+  }
+}
+@keyframes move-up-slightly {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, -12px, 0);
+  }
+}
+
+#alert-message {
+  font-size: 20px !important;
+  font-weight: 200 !important;
+  letter-spacing: 4px !important;
+}

@@ -30,6 +30,7 @@ A template for nice Halo Infinite themed alerts to use with Streamlabs.
 |-------------------------------------------|
 | [Streamlabs Setup](#streamlabs)           |
 | [StremElements Setup](#streamelements)    |
+| [Available templates (3)](#variants)      |
 | [Questions or suggestions?](#suggestions) |
 |                                           |
 
@@ -55,6 +56,10 @@ A template for nice Halo Infinite themed alerts to use with Streamlabs.
 4. Copy the content of `template-streamlabs.html` of this project and paste it into the __HTML__ field.
 
 5. Copy the content of `template.css` of this project and paste it into the __CSS__ field.
+
+| **Note** |
+|-------------------------------------------|
+| If you're setting up the "template-cheer" variant, copy the content of `template-cheer-streamlabs.js` and paste it into the __JS__ field |
 
 6. Save settings.
 
@@ -106,6 +111,19 @@ And you're good to go!
 
 And you're finally good to go!
 
+---
+
+### Available templates<a name="variants"></a>
+### "Template"
+![Alert demo](./doc-assets/alert-demo.gif)
+
+### "Template B"
+![Alert B demo](./doc-assets/alert-b-demo.gif)
+
+### "Template Cheer"
+![Alert Cheer demo](./doc-assets/bits-alert-demo.gif)
+
+</div>
 ---
 
 ## Any question or suggestion?<a name="suggestions"></a>

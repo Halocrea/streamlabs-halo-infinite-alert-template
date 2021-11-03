@@ -1,0 +1,402 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+:root {
+	--color-green-light: #b9e5ff;
+	--color-green: #ccff99;
+	--shadow-green-neon: 0 0 20px 0 var(--color-green-light);
+	--transition-easing: cubic-bezier(.17, .67, .16, .99);
+}
+
+html, body, .wrapper {
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+	height: 100vh;
+	font-family: "Ropa Sans", sans-serif;
+}
+
+.wrapper {
+	background-color: rgba(0, 0, 0, 0.75);
+	transform: scale(1.1);
+}
+
+.wrapper, .alert {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.alert {
+	width: 450px;
+	padding: 40px 0;
+	overflow: hidden;
+	transform: translate3d(0, -225px, 0);
+	mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 10px, black 30px);
+	text-shadow: var(--color-green-light) 1px 0 10px;
+}
+
+.cheer {
+	box-sizing: border-box;
+	position: relative;
+	display: inline-block;
+	flex: none;
+	width: auto;
+	padding: 3px 9px;
+	background-color: var(--color-green-light);
+	box-shadow: var(--shadow-green-neon);
+	font-size: 11px;
+	font-weight: bold;
+	letter-spacing: 3px;
+	text-align: center;
+	text-transform: uppercase;
+	white-space: nowrap;
+	overflow: hidden;
+	width: 0;
+	-webkit-animation: cheerIn 1s var(--transition-easing) forwards;
+	animation: cheerIn 1s var(--transition-easing) forwards;
+}
+
+.vertical-bars {
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: flex-start;
+	height: 114px;
+	-webkit-animation: verticalBarsIn 1s var(--transition-easing) forwards;
+	animation: verticalBarsIn 1s var(--transition-easing) forwards;
+}
+
+.vertical-bars>* {
+	margin: 1px;
+	background-color: var(--color-green-light);
+	box-shadow: var(--shadow-green-neon);
+}
+
+.vertical-bars .dot {
+	width: 2px;
+	height: 2px;
+	opacity: 0;
+}
+
+.vertical-bars .dot.top {
+	-webkit-animation: topDotIn 0.5s var(--transition-easing) forwards;
+	animation: topDotIn 0.5s var(--transition-easing) forwards;
+	-webkit-animation-delay: 0.4s;
+	animation-delay: 0.4s;
+}
+
+.vertical-bars .dot.bottom {
+	-webkit-animation: bottomDotIn 0.5s var(--transition-easing) forwards;
+	animation: bottomDotIn 0.5s var(--transition-easing) forwards;
+	-webkit-animation-delay: 0.4s;
+	animation-delay: 0.4s;
+}
+
+.vertical-bars .big-line {
+	width: 2px;
+	height: 40px;
+}
+
+.vertical-bars .thin-line {
+	width: 1px;
+	height: 30px;
+	opacity: 0.3;
+}
+
+.disc {
+	padding: 10px;
+	font-size: 16px;
+	font-weight: light;
+	color: var(--color-green-light);
+	-webkit-animation: discIn 1s var(--transition-easing) forwards;
+	animation: discIn 1s var(--transition-easing) forwards;
+}
+
+.message {
+	position: relative;
+	box-sizing: border-box;
+	flex: none;
+	width: 0;
+	height: 100%;
+	padding: 15px 0 15px 20px;
+	overflow: hidden;
+	color: var(--color-green-light);
+	letter-spacing: 2px;
+	opacity: 0;
+	white-space: nowrap;
+	-webkit-animation: messageIn 0.75s var(--transition-easing) forwards;
+	animation: messageIn 0.75s var(--transition-easing) forwards;
+	-webkit-animation-delay: 1.15s;
+	animation-delay: 1.15s;
+}
+
+.message>p {
+	margin: 20px 0;
+}
+
+.message .sm {
+	font-size: 10px;
+}
+
+.message .o-5 {
+	opacity: 0.75;
+}
+
+.message .o-8 {
+	opacity: 0.9;
+}
+
+.message .greener {
+	color: var(--color-green);
+}
+
+.alert:not(.loaded) .dl-effect {
+	opacity: 0;
+}
+
+.dl-effect {
+	position: absolute;
+	bottom: 0;
+	left: 20px;
+	display: flex;
+	align-items: center;
+	opacity: 1;
+	transition: opacity 0.15s linear;
+}
+
+.dl-effect .dl-bar {
+	padding: 0 6px;
+	border-left: 2px solid var(--color-green-light);
+	border-right: 2px solid var(--color-green-light);
+	font-size: 12px;
+}
+
+.dl-effect .nb-bits {
+	padding-left: 10px;
+}
+
+.alert.loaded .dot.top, .alert.loaded .dot.bottom {
+	opacity: 1;
+	-webkit-animation: unset;
+	animation: unset;
+	transition: opacity 0.25s linear 0.75s, transform 0.25s var(--transition-easing) 0.75s;
+}
+
+.alert.loaded .vertical-bars {
+	-webkit-animation: unset;
+	animation: unset;
+	opacity: 1;
+	height: 114px;
+}
+
+.alert.loaded .disc {
+	opacity: 1;
+	padding: 15px;
+	animation: unset;
+	transition: opacity .15s linear;
+}
+
+.alert.completed .disc {
+	opacity: 0;
+}
+
+.alert.completed .blink1, .alert.completed .blink1-delay1, .alert.completed .blink1-delay2, .alert.completed .blink1-delay3, .alert.completed .blink1-delay4 {
+	-webkit-animation: blink1 1s linear forwards;
+	animation: blink1 1s linear forwards;
+}
+
+.alert.completed .blink1-delay1 {
+	-webkit-animation-delay: 0.25s;
+	animation-delay: 0.25s;
+}
+
+.alert.completed .blink1-delay2 {
+	-webkit-animation-delay: 0.5s;
+	animation-delay: 0.5s;
+}
+
+.alert.completed .blink1-delay3 {
+	-webkit-animation-delay: 0.66s;
+	animation-delay: 0.66s;
+}
+
+.alert.completed .blink1-delay4 {
+	-webkit-animation-delay: 0.75s;
+	animation-delay: 0.75s;
+}
+
+.alert.completed .vertical-bars {
+	transition: height 1s var(--transition-easing) 1s;
+	height: 0;
+}
+
+.alert.completed .dot {
+	opacity: 0 !important;
+}
+
+.alert.completed .dot.top {
+	transform: translate3d(0, -40px, 0);
+}
+
+.alert.completed .dot.bottom {
+	transform: translate3d(0, 40px, 0);
+}
+
+@-webkit-keyframes cheerIn {
+	0% {
+		width: 0;
+		left: -150px;
+	}
+	25% {
+		width: 60px;
+	}
+	100% {
+		width: 60px;
+		left: 0;
+	}
+}
+
+@keyframes cheerIn {
+	0% {
+		width: 0;
+		left: -150px;
+	}
+	25% {
+		width: 60px;
+	}
+	100% {
+		width: 60px;
+		left: 0;
+	}
+}
+
+@-webkit-keyframes discIn {
+	0% {
+		padding: 30px;
+		opacity: 0;
+	}
+	25% {
+		padding: 15px;
+		opacity: 0.25;
+	}
+	100% {
+		padding: 15px;
+		opacity: 1;
+	}
+}
+
+@keyframes discIn {
+	0% {
+		padding: 30px;
+		opacity: 0;
+	}
+	25% {
+		padding: 15px;
+		opacity: 0.25;
+	}
+	100% {
+		padding: 15px;
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes verticalBarsIn {
+	from {
+		height: 0;
+	}
+	to {
+		height: 114px;
+	}
+}
+
+@keyframes verticalBarsIn {
+	from {
+		height: 0;
+	}
+	to {
+		height: 114px;
+	}
+}
+
+@-webkit-keyframes topDotIn {
+	from {
+		opacity: 0;
+		transform: translate3d(0, -40px, 0);
+	}
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+@keyframes topDotIn {
+	from {
+		opacity: 0;
+		transform: translate3d(0, -40px, 0);
+	}
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+@-webkit-keyframes bottomDotIn {
+	from {
+		opacity: 0;
+		transform: translate3d(0, 40px, 0);
+	}
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+@keyframes bottomDotIn {
+	from {
+		opacity: 0;
+		transform: translate3d(0, 40px, 0);
+	}
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+@-webkit-keyframes messageIn {
+	from {
+		opacity: 0;
+		width: 0;
+	}
+	to {
+		opacity: 1;
+		width: 500px;
+	}
+}
+
+@keyframes messageIn {
+	from {
+		opacity: 0;
+		width: 0;
+	}
+	to {
+		opacity: 1;
+		width: 500px;
+	}
+}
+
+@-webkit-keyframes blink1 {
+	0%, 15%, 39%, 50%, 55%, 70% {
+		opacity: 1;
+	}
+	10%, 12%, 40%, 49%, 71%, 100% {
+		opacity: 0;
+	}
+}
+
+@keyframes blink1 {
+	0%, 15%, 39%, 50%, 55%, 70% {
+		opacity: 1;
+	}
+	10%, 12%, 40%, 49%, 71%, 100% {
+		opacity: 0;
+	}
+}
